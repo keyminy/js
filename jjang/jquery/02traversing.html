@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	div.bclass{
+		width: 400px;
+		height: 40px;
+		border:2px dotted #aaa; /*옅은 회색*/
+		margin: 10px;
+	}
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".bclass > button").click(function(){
+		//alert("div를 클릭하셨습니다.");
+		 $(this).parent().css("border","2px dotted red");
+	});
+	//dataRow class안에 있는 제거 버튼을 선택하고 이벤트 처리
+	$(".dataRow button").click(function(){
+		//alert("제거버튼");
+		//$(this).parents(".dataRow").remove();
+		//this : button, parents(selector) : 선택된 객체의 위쪽에서 selector를 "모두" 찾는다.
+		$(this).closest(".dataRow").remove(); // .closest(selector) 맨첨에 만나는거 삭제
+	});
+});
+</script>
+</head>
+<body>
+<div class="bclass"><button>클릭</button></div>
+<div class="bclass"><button>클릭</button></div>
+<div class="bclass"><button>클릭</button></div>
+
+<div class="dataRow">
+	<div>클릭하면 사라집니다.</div>
+	<div><input type="file"/><button>제거</button></div>
+</div>
+<div class="dataRow">
+	<div>클릭하면 사라집니다.</div>
+	<div><input type="file"/><button>제거</button></div>
+</div>
+<div class="dataRow">
+	<div>클릭하면 사라집니다.</div>
+	<div><input type="file"/><button>제거</button></div>
+</div>
+</body>
+</html>

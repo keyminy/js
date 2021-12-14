@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전화번호 입력 이벤트 처리</title>
+  <script>
+    // function to_auto_tel2(){
+    //   //alert("tel2로 넘어갑니다.");
+    //   var data = document.getElementById("tel1").value; //document.getElementById("tel1")= this해도됨!!
+    //   //alert(data);
+    //   //data가 문자열이거나 배열인 경우 length 속성을 이용해서 데이터의 길이를 알아낼 수 있다.
+    //   if(data.length>=3){
+    //     document.getElementById("tel2").focus(); //객체.focus() : 커서를객체위에 놓기 : tel2로 넘어감
+    //   }
+    // }
+    // function to_auto_tel3(){
+    //   //alert("tel2로 넘어갑니다.");
+    //   var data = document.getElementById("tel2").value;
+    //   //alert(data);
+    //   //data가 문자열이거나 배열인 경우 length 속성을 이용해서 데이터의 길이를 알아낼 수 있다.
+    //   if(data.length>=4){
+    //     document.getElementById("tel3").focus(); //객체.focus() : 커서를객체위에 놓기 : tel2로 넘어감
+    //   }
+    // }
+
+    //그냥 요렇게 하면 끝!! 변하는 항목을 빨리 파악하자.
+    function to_auto_tel(thisStr,nextStr,len){
+      var data = document.getElementById(thisStr).value;
+      if(data.length>=len){
+        document.getElementById(nextStr).focus();
+      }
+    }
+  </script>
+</head>
+<body>
+  <!--이벤트 활용-->
+  <!--전화번호 입력란 첫번째 자리 데이터가 3자리가 넘어가면 두번째 자리로 커서를 자동이동 시키기-->
+  <!--전화번호 입력란 두번째 자리 데이터가 4자리가 넘어가면 세번째 자리로 커서를 자동이동 시키기-->
+  <!--이벤트가 무엇일까? key in 했는데 데이터가 들어간 상태여야함.-->
+  <!--key down이벤트 -> 데이터가 입력됨 -> key up이벤트 -->
+  <!--size는 maxlength보다 1더 크게 해주장. -->
+  전화번호 : <input type="text" maxlength="3" size="4" id="tel1" onkeyup="to_auto_tel('tel1','tel2',3);"> 
+            - <input type="text" maxlength="4" size="5" id="tel2" onkeyup="to_auto_tel('tel2','tel3',4);"> 
+            - <input type="text" maxlength="4" size="5" id="tel3">
+  
+</body>
+</html>

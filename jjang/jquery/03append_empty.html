@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var appendStr = "<div>이미지 첨부 : <input type='file' name='img'/>"
+	+"<button type='button' class='removeBtn'>제거</button></div>"; //전역변수로 1번만 선언하자..
+$(function(){
+	var fileCnt = 1;
+	//이미지 첨부 추가 버튼 이벤트 처리
+	$("#appendImageBtn").click(function(){
+		//alert("이미지 추가 클릭");
+		if(fileCnt == 10) {
+			alert("파일 첨부는 10개만 가능합니다.");
+			return; //append로 넘어가지 않고 종료된다.
+		}
+		$("#imageDiv").append(appendStr); //div안에 첨부파일 문항이 들어간다.
+		fileCnt++;
+	});
+	//첨부 파일 한줄 제거 이벤트처리
+	// 이벤트를 넣는 과정에서 removeBtn이 처음(=이벤트를 넣을 때)에 존재하지 않기 때문에
+	//뒤에 나오는 removeBtn에는 이벤트가 적용되지않는다. sol) on()함수..!!
+/*	$(".removeBtn").click(function(){
+		alert("첨부파일 제거");
+	});*/
+	$("#imageDiv").on("click",".removeBtn",function(){
+		$(this).closest("div").remove(); //this : .removeBtn
+		fileCnt--;
+	});
+});
+</script>
+</head>
+<body>
+	<form action="#" method="post">
+		제목 : <input type="text" name="title" /><br />
+		<button type="button" id="appendImageBtn">이미지 추가</button>
+		<!-- 이미지 추가를 누르면 이미지 첨부하는 란이 계속 나오게.. imageDiv안에 append이용하기-->
+		<div id="imageDiv">
+			<div>이미지 첨부 : <input type="file" name="img"/></div>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>a</div>
+  <div>b</div>
+  <div>c</div>
+  <script>
+    //div태그 찾아보기
+    var objects = document.getElementsByTagName("div");
+    //alert(objects); //[object HTMLCollection] <- 여러개 선택된다는걸 알 수 있다(div여러개니까요.)
+    //objects로 배열처리 해보자
+    for(i=0;i<objects.length;i++){
+      //alert(objects[i]); //[object HTMLCollection] 3번나오네(객체를 찾은것)
+      alert(objects[i].innerHTML); // a,b,c 나오는구나
+    }
+  </script>
+</body>
+</html>

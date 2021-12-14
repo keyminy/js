@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수를 이용한 태그 만들기</title>
+  <style>
+    table,td,th{
+      border: 1px solid #888;
+      
+    }
+  </style>
+  <script src="./08-04_util.js"></script>
+  <script>
+    //alert(pairTag("","h1")+"첫번째 헤드태그" + pairTag("/","h1"));
+    //document.write(pairTag("","h1")+"첫번째 헤드 태그" + pairTag("/","h1"));
+    document.write(tag("h1","첫번째 헤드태그다!** - 데이터"));
+
+    //td - tr - table (안에있는거 먼저)
+    let items= ["컴퓨터","키보드","모니터"];
+    var str = "";
+    for(item of items){
+      //tr > td 구조 태그 만들기
+      str += tag("tr",tag("td",item));
+      //console.log(str);
+    }
+    document.write(tag("table",str));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

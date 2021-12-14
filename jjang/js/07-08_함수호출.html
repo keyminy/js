@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수호출</title>
+  <style>
+    .cursor_pointer:hover{
+      color:red;
+      cursor:pointer;
+    }
+  </style>
+  <script>
+    //문서가 로딩이 된 후 처리되는 함수 선언
+    function ready(){
+      alert("문서가 로딩이 다되면 실행되는 부분");
+    }
+    //클릭을 하면 처리되는 함수 정의
+    function span_click(){
+      alert("여기를 클릭했어요");
+    }
+    //클릭한 객체로부터 전달받은 데이터를 표시하는 함수
+    function span_click_viewText(data){
+      alert(data);
+    }
+    //변수에 저장된 함수 선언하기
+    func_noname = function(){
+      alert("익명함수 호출하고 있다. 변수에 함수를 저장했다가 꺼내서 호출해서 실행하는 원리를 가지고 있다");
+    }
+    //자바스크립트의 객체 -> 데이터 저장하는 속성,처리하는 함수를 가짐
+  </script>
+</head>
+<body onload="ready();">
+  <span onclick="span_click();"class="cursor_pointer">여기를 클릭하세요.</span><br/>
+  <!--this : this를 포함하고 있는 객체를 의미-->
+  <span onclick="span_click_viewText(this.innerHTML);" class="cursor_pointer">자바</span>
+  <span onclick="func_noname();" class="cursor_pointer">익명함수 호출</span>
+</body>
+</html>
