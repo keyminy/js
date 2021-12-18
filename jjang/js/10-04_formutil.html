@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유용한 함수로 폼태그</title>
+  <script src="./09-04_util.js"></script>
+  <script src="./10-03_formutil.js"></script>
+  <style>
+    .requiredItem {color: red;}
+  </style>
+  <script>
+    //submit()하기 전에 데이터 유효성 검사를 진행하고 submit()을 하자
+    function checkSubmit(){
+      //alert("checkSubmit()");
+      //필수 데이터 항목 : id,pw
+      var id = sel("id");
+      //formutil.js에 있는 if(!require(input객체,항목이름)) return false;
+      if(!require(id,"아이디")) return false; //이렇게 한줄짜리 코드를 만들엇당..
+      //alert("아이디 체크 끝"); //어디까지 진행됬는지 확인용
+      var pw = sel("pw"); //id가 pw인 객체찾아서 변수 pw에 저장
+      if(!require(pw,"비밀번호")) return false;
+ 
+      //최소 길이 제한
+      //아이디와 비밀번호는 4자 이상 쓰기
+      if(!checkLength(id,"아이디",3)) return false;
+      //비밀번호 -> 경고,포커스,입력했던 데이터 지우기,submit막기(return false)
+      if(!checkLength(pw,"비밀번호",3)) return false;
+ 
+
+     //이벤트 처리하는 곳에서도 return을 하고있도록 작성한다.
+      return false; //return false로 인해 submit()을 취소시킨다.
+    }
+    //공백제거하는 removeBlank(input객체)는 formUtil.js에 등록해놓았다.
+  </script>
+</head> 
+<body>
+  <h1>로그인</h1>
+  <span class="requiredItem">*</span>는 필수 입력입니다.
+  <!--form태그에서 submit이벤트가 발생하는데 return checkSubmit()=false으로 인해 주소뒤에 # 붙으면서 전송현상이 없음!!-->
+  <form action="#" method="post" id="loginForm" onsubmit="return checkSubmit();">
+    <label><span class="requiredItem">*</span>아이디</label>
+    <input type="text" name="id" id="id" placeholder="4자이상 입력이 필요합니다." onkeyup="removeBlank(this);"><br>    
+    <label><span class="requiredItem">*</span>비밀번호</label>
+    <!--pw부분은 js로 막음-->
+    <input type="password" name="pw" id="pw" placeholder="4자이상 입력이 필요합니다."><br>
+    <button id="loginBtn">로그인</button>
+  </form>
+</body>
+</html>

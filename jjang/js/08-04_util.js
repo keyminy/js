@@ -6,3 +6,11 @@ function pairTag(preChar,tagName){
 function tag(tagName,data){
   return pairTag("",tagName) + data + pairTag("/",tagName);
 }
+// id객체를 선택하는 함수 : 객체 하나만 찾아진다.
+function sel(id){
+  return document.getElementById(id);
+}
+//tag객체를 선택하는 함수 : 객체 여러개가 나옴 []
+function selTag(tag){
+  return document.getElementsByTagName(tag);
+}

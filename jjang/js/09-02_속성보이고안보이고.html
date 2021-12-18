@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>div 객체를 보이게 안보이게하기</title>
+  <style>
+    div{
+      width: 400px;
+      height: 150px;
+      border: 1px solid #444;
+      display: none;
+    }
+    #div0 {background: orange; display: block;}
+    #div1 {background: green;}
+    #div2 {background: yellow;}
+  </style>
+  <script src="08-04_util.js"></script>
+  <script>
+   function showHide(index){
+     var tags = selTag("div");
+     console.log(tags); //HTMLCollection 이라고 나옴
+     //for문으로 전체 안보이게 하기 : 다 안보이게 한다음에, 선택한것만 보이게 하기
+     for(tag of tags){
+        //tags 배열로 부터 tag(한개의 div가 들어감)
+        tag.style.display = "none";
+     }
+     //내가 클릭한 버튼과 동일한 index의 div를 보여주게함.
+     tags[index].style.display = "block";
+   }
+  </script>
+</head>
+<body>
+  <h1>클릭해서 보이게 안보이게</h1>
+  <button id="orangeDivBtn" onclick="showHide(0)">오렌지 div</button>
+  <button id="greenDivBtn" onclick="showHide(1)">그린 div</button>
+  <button id="yellowDivBtn" onclick="showHide(2)">옐로우 div</button>
+  <hr>
+  <div id="div0"></div>
+  <div id="div1"></div>
+  <div id="div2"></div>
+</body>
+</html>

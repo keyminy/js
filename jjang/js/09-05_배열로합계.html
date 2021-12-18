@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열</title>
+  <script>
+    //전화번호 3자리 입력 -> 전체 합쳐서 하나로 저장하기(xxx-xxxx-xxxx)
+    var tels=["010","6324","4444"]; //입력받은 데이터는 전달 받으면 배열로 받는다
+    var tel = tels.join("-"); //DB에 저장하려는 용도 : 010-6324-4444
+    document.write("전화번호 : " + tel + "<br/>");
+    document.write("전화번호 배열 : " + tel.split("-") + "<br/>"); // "-"를 기준으로 배열로 만들기
+    var arr = tel.split("-");
+    console.log(arr); //['010', '6324', '4444']
+
+    //배열 데이터로 합계 구하기 : 각각의 데이터를 전부다 돌아야하니 forEach하기.(배열함수에요)
+    //https://www.w3schools.com/jsref/jsref_foreach.asp
+    var scores = [100,95,70,85];
+    var sum = 0;
+    scores.forEach(function(score){
+      sum += score;
+    });
+    document.write("점수 합계 : ",sum); //점수 합계 :  350
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

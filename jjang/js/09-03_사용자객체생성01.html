@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    //Book 객체 생성자 선언 
+    function Book(title,author,pages,price){
+      //this : 나 자신의 객체에 있는 title,author~~
+      //맨 처음에는 this.title이 없었다. 
+      //JS에서는 사용하면 변수가 없으면 자동으로 만들어놓고 값을 저장하게 된다.
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.price = price;
+    }
+    //객체를 생성해서 변수에 저장하는 부분.
+    jsBook = new Book("자바스크립트","홍길동",500,15000); //생성자 호출
+    console.log("jsBook:",jsBook); //jsBook:[object Object](Book)
+    console.log("jsBook 제목 : ",jsBook.title); // jsBook 제목 :  자바스크립트
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

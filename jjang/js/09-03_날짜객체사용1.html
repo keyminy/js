@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>날짜객체 사용하기</title>
+  <script src="./09-04_util.js"></script>
+  <script>
+    //오늘날짜 출력하기
+    document.write("오늘 날짜 : " + new Date() +"<br/>"); //dom.write() : body부분에 출력해라
+    //Fri Dec 17 2021 23:17:45 GMT+0900 (한국 표준시) 가 나온다.
+    
+    //올해의 크리스마스 날짜 출력해보기
+    document.write("올해 크리스마스 : " + new Date("2021-12-25") + "<br/>");//Date안에 날짜 형식에 맞는 파라매터 전달
+    document.write("21.02.05 오전9시20분 : " + new Date("2021-02-05T09:20:00") + "<br/>");
+
+    // 강의에 없는 내용...
+    var today = new Date();
+    var year = today.getFullYear(); //2021
+    var month = today.getMonth() +1; //0~11의 숫자가 나오므로 +1한다
+    //console.log(month); // +1안하면 오늘 12월인데 11로 나옴
+    var date = today.getDate(); //18일
+
+    //출력하고 싶은 양식으로 만들어 내기
+    todayStr = year + "-" + month + "-" + date;
+    document.write("형식에 맞춘 오늘 날짜 : " + todayStr + "<br/>");
+    //alert(typeof today); //object(날짜객체)
+   
+    //오늘 날짜를 형식에 맞춰서 출력하기(함수사용)
+   document.write("형식 함수 이용한 오늘 날짜 : " + dateToStr(today,"-","week") + "<br/>");
+   document.write("형식 함수 이용한 오늘 날짜 : " + dateToStr(today,".","week") + "<br/>");
+
+   //크리스마스 까지 남은 일자 -> 시간 부분은 버린다. Math.floor(실수) : 버림, Math.round(실수) : 반올림
+   //오늘 날짜는 위에서 var today로 저장해놨음
+   //크리스마스
+   var chrisDate = new Date("2021-12-25");
+   var miliSec = chrisDate.getTime() - today.getTime();
+   var defTime = miliSec/(1000*60*60*24); //ms을 1일로 : 6.79556400462963
+  // console.log(defTime);
+   var defDate = Math.floor(defTime);
+   document.write("크리스마스까지 남은 날짜 : " + defDate + "일 입니다.");
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

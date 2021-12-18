@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--css보다 먼저 util.js 등록하자 : 태그 자동 만들기-->
+  <script src="./09-04_util.js"></script>
+  <style>
+    div{
+      border: 1px solid #888;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+<!--우리가 만들려는 스크립트-->
+<script>
+  //점수를 모아놓은 배열 선언
+  var scores = [];
+
+  // 추가버튼 처리 함수쓰기
+  function appendScore(){
+    var scoreInput = document.querySelector("#score");
+    // 점수 입력란을 찾아서 값을 가져온다.
+    var score = scoreInput.value; //데이터를 가져와서 score로 넘겨주니 getter
+    //alert(score);
+    //alert(typeof score); //string이넹 <- 계산이 안되요 number로 바꿔야함
+    scores.push(Number(score));
+    alert(scores);
+    //점수 입력란 데이터 제거하고 커서를 점수 입력란에 다시 위치시켜야 편하게 입력가능.
+    scoreInput.value = ""; //데이터를 저장하는 setter의 의미(기존 점수 입력했던거 제거)
+    scoreInput.focus(); //커서를 위치시켜줌
+    //들어온 배열을 가지고 ul태그를 만들어낸다.
+    var str ="";
+    var sum = 0; //sum만들기
+    //score의 갯수만큼 ul태그 안에 들어갈 li태그를 만듬
+    scores.forEach(function(score){
+      str += tag("li",score); //li태그 만들기
+      sum += score; //합계 누적시키기
+    });
+    str = tag("ul",str); // li tag(str) 밖에 ul tag로 감싼다.
+    //scoreList안에 str(ul>li)값이 덮어쓰인다 (setter)
+    document.querySelector("#scoreList").innerHTML = str;
+    //#sum 밑에 있는 span태그에다가 써주세요 #sum > span
+    document.querySelector("#sum > span").innerHTML = sum; //계산된 합계
+  }
+</script>
+</head>
+<body>
+  <div>
+    점수를 입력하세요.
+    <!-- <input type="text" id="score"/> <button id="appendBtn" onclick="appendScore();">추가</button> -->
+    <input type="text" id="score"/> <button id="appendBtn">추가</button>
+    <!--점수를 입력하면 js의 배열에 [] 데이터가 추가됨 -->
+  </div>
+  <div id="scoreList">점수를 입력하세요.</div>
+  <div id="sum">합계 : <span>0</span>점</div>
+  <!--js의 위치가 id : appendBtn밑에 있다는것을 유의하기 -->
+  <script>
+    document.querySelector("#appendBtn").onclick = appendScore;
+    //appendScore()하면 호출해서 실행한 담에 집어넣자는 의미가됨.
+  </script>
+</body>
+</html>

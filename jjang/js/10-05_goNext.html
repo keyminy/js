@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다음항목으로 자동이동</title>
+  <script src="./09-04_util.js"></script>
+  <script src="./10-03_formutil.js"></script>
+</head>
+<body>
+  전화번호 : <input maxlength="3" onkeyup="goNext(this,sel('tel2'),3);" id="tel1" style="width: 30px;">
+  - <input maxlength="4" onkeyup="goNext(this,sel('tel3'),4);" id="tel2" style="width: 40px;">
+  - <input maxlength="4" onkeyup="goNext(this,sel('tel3'),4);" id="tel3" style="width: 40px;"><br>
+  <!--this : 현재 객체, sel('tel2'):다음 객체,길이 : 3-->
+  주민번호 : <input maxlength="6" onkeyup="goNext(this,sel('jumin2'),6);" id="jumin1" style="width: 160px;">
+  - <input maxlength="7" onkeyup="goNext(this,sel('submitBtn'),7);" id="jumin2" style="width: 160px;"><br>
+  <!--오.. 7자리 다 채우면 submitBtn으로감-->
+  <button id="submitBtn">가입</button>
+</body>
+</html>
