@@ -41,7 +41,7 @@ public class Ajax1 extends HttpServlet {
 		
 		String jsonData = "{\"username\":\"ssar\",\"password\":\"1234\"}";
 		//브라우저가 응답을 받으니 어떤 데이터인지 알려줘야함
-		//서버에서 데이터를 보낼때 어떤 데이터인지 알려주는거야!!.. dataType : "json"안해줘도됨
+		//서버에서 "브라우저에게" 데이터를 보낼때 어떤 데이터인지 알려주는거야!!.. dataType : "json"안해줘도됨
 		response.setContentType("application/json"); 
 		PrintWriter out = response.getWriter();
 		out.print(jsonData);

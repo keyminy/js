@@ -16,7 +16,7 @@
 		function getajax(){
 			$.ajax({
 				type:"GET", //기본전략이 get임
-				url:"http://localhost:8082/DareAjax/ajax1?username=ssar&password=1234",
+				url:"http://localhost:8082/ajax1?username=ssar&password=1234",
 				dataType:"text" //목적 : 파싱해주는것
 				//자바에서 json데이터로 응답해줄때,  .done(res에 받는다)
 			})

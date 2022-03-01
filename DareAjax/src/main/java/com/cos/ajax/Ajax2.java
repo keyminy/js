@@ -29,8 +29,9 @@ public class Ajax2 extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//json데이터 받기위해 버퍼로 원형데이터를 받기
-		BufferedReader br = request.getReader(); //http의 body데이터를 순수하게 읽기
+		//request.getReader() : http의 body데이터를 순수하게 읽기
 		//request.getParameter는 데이터를 파싱해서 읽는것이다.
+		BufferedReader br = request.getReader(); 
 		String requestData = br.readLine();
 		System.out.println(requestData);
 		//{"username":"ssar","password":"1234"} json데이터 출력됨

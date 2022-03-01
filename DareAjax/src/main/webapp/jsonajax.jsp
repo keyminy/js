@@ -16,21 +16,26 @@
 		var data = {
 			username:"ssar",
 			password:"1234"
-		}
-		console.log("데이터",data);
-		console.log("스트링기피",JSON.stringify(data));
+		}   
+		console.log("데이터 : ",data);
+		var jsonData=JSON.stringify(data);
+		console.log("스트링기피 : ",jsonData);
+		var parsejs = JSON.parse(jsonData);
+		console.log("parse() : " , parsejs);
+		//console.log("스트링기피테스트",JSON.stringify(data).username); //undefined안되..
 		
 		function jsonajax(){
 			$.ajax({
 				type:"POST", //기본전략이 get임
-				url:"http://localhost:8082/DareAjax/ajax2",
+				url:"http://localhost:8082/ajax2",
 				data:JSON.stringify(data),
 				contentType : "application/json", //나 json데이터 보낸다 알려줌
 				dataType:"json" //목적 : 파싱해주는것
 				//자바에서 json데이터로 응답해줄때,  .done(res에 받는다)
 			})
 			.done(res=>{
-				console.log(res); //{id: 1, username: 'love', password: '1234', phone: '01012345678'}
+				console.log(res); 
+				//{id: 1, username: 'love', password: '1234', phone: '01012345678'}
 				console.log("유저네임",res.username); //love
 			})
 			.fail(error=>{
